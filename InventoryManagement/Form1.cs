@@ -26,6 +26,9 @@ namespace InventoryManagement
         SortedList<string, decimal> firstaidList = new SortedList<string, decimal>
             { ["Bandage"] = 10, ["Rubbing Alchohol"] = 4, ["Hand Sanitizer"] = 2, ["Gauze"] = 5 };
 
+        string aidString = "";
+        string foodString = "";
+        string weaponString = "";
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
@@ -37,7 +40,8 @@ namespace InventoryManagement
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            string listItem = listBox1.GetItemText(listBox1.SelectedItem);
+            //foreach (KeyValuePair<string, decimal> item in itemList) ;
         }
 
         private void rdoFood_CheckedChanged(object sender, EventArgs e)
@@ -58,34 +62,21 @@ namespace InventoryManagement
             }
         }
 
-       // private string MasterList(string list, string name)
-       // {
-          //  string newString = "";
-          //  foreach (KeyValuePair<string, decimal> finalList in list)
-           // {
-                //newString += finalList.Key + "\t" + finalList.Value + "\n";
-           // }
-           
-      //  }
+        private string MasterList(SortedList<string,decimal> list, string name)
+        {
+            name = "";
+            foreach (KeyValuePair<string, decimal> item in list)
+            {
+                name += item.Key + "\t" + item.Value + "\n";
+            }
+            return name;
+        }
 
         private void btnShow_Click(object sender, EventArgs e)
         {
-            
-            string foodString = "";
-            string aidString = "";
-            string weaponString = "";
-            foreach (KeyValuePair<string, decimal> item in foodList)
-            {
-                foodString +=item.Key + "\t" + item.Value + "\n";
-            }
-            foreach (KeyValuePair<string, decimal> item in firstaidList)
-            {
-                aidString += item.Key + "\t" + item.Value + "\n";
-            }
-            foreach (KeyValuePair<string, decimal> item in weaponList)
-            {
-                weaponString +=item.Key + "\t" + item.Value + "\n";
-            }
+           foodString = MasterList(foodList, foodString);
+           aidString =  MasterList(firstaidList, aidString);
+           weaponString =  MasterList(weaponList, weaponString);
             string bigList = "Food:\n" + foodString + "\n"+"First Aid:\n"+ aidString + "\n"+ "Weapons:\n" + weaponString;
             MessageBox.Show(bigList,"Master List");
         }

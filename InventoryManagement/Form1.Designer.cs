@@ -31,15 +31,15 @@
             this.rdoFood = new System.Windows.Forms.RadioButton();
             this.rdoWeapons = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gboCategories = new System.Windows.Forms.GroupBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nudAmount = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnShow = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.gboCategories.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAmount)).BeginInit();
             this.SuspendLayout();
             // 
             // rdoFood
@@ -78,17 +78,17 @@
             this.radioButton3.UseVisualStyleBackColor = true;
             this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
-            // groupBox1
+            // gboCategories
             // 
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.rdoWeapons);
-            this.groupBox1.Controls.Add(this.rdoFood);
-            this.groupBox1.Location = new System.Drawing.Point(11, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(250, 81);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Categories";
+            this.gboCategories.Controls.Add(this.radioButton3);
+            this.gboCategories.Controls.Add(this.rdoWeapons);
+            this.gboCategories.Controls.Add(this.rdoFood);
+            this.gboCategories.Location = new System.Drawing.Point(11, 12);
+            this.gboCategories.Name = "gboCategories";
+            this.gboCategories.Size = new System.Drawing.Size(250, 81);
+            this.gboCategories.TabIndex = 3;
+            this.gboCategories.TabStop = false;
+            this.gboCategories.Text = "Categories";
             // 
             // listBox1
             // 
@@ -98,12 +98,12 @@
             this.listBox1.Size = new System.Drawing.Size(120, 95);
             this.listBox1.TabIndex = 4;
             // 
-            // numericUpDown1
+            // nudAmount
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(205, 125);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(56, 20);
-            this.numericUpDown1.TabIndex = 5;
+            this.nudAmount.Location = new System.Drawing.Point(205, 125);
+            this.nudAmount.Name = "nudAmount";
+            this.nudAmount.Size = new System.Drawing.Size(56, 20);
+            this.nudAmount.TabIndex = 5;
             // 
             // button1
             // 
@@ -155,14 +155,14 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.nudAmount);
             this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gboCategories);
             this.Name = "Form1";
             this.Text = "Survival Supplies";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.gboCategories.ResumeLayout(false);
+            this.gboCategories.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAmount)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -172,9 +172,9 @@
         private System.Windows.Forms.RadioButton rdoFood;
         private System.Windows.Forms.RadioButton rdoWeapons;
         private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gboCategories;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nudAmount;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnExit;
