@@ -41,7 +41,11 @@ namespace InventoryManagement
         private void button1_Click(object sender, EventArgs e)
         {
             string listItem = listBox1.GetItemText(listBox1.SelectedItem);
-            //foreach (KeyValuePair<string, decimal> item in itemList) ;
+            decimal value = this.nudAmount.Value;
+            subtract(value, listItem, foodList);
+            subtract(value, listItem, weaponList);
+            subtract(value, listItem, firstaidList);
+            nudAmount.Value = 0;
         }
 
         private void rdoFood_CheckedChanged(object sender, EventArgs e)
@@ -79,6 +83,18 @@ namespace InventoryManagement
            weaponString =  MasterList(weaponList, weaponString);
             string bigList = "Food:\n" + foodString + "\n"+"First Aid:\n"+ aidString + "\n"+ "Weapons:\n" + weaponString;
             MessageBox.Show(bigList,"Master List");
+        }
+        private bool subtract(decimal value,string item, SortedList<string, decimal> list)
+        {
+            if (list.ContainsKey(item))
+            {
+                int itemIndex = list.IndexOfKey(item);
+                list[item] -= value;
+                return true;
+            }
+            else
+                return false;
+                
         }
     }
 }
