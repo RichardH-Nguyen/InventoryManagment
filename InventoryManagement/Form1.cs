@@ -142,6 +142,7 @@ namespace InventoryManagement
                         UpdateList(firstaidList);
                     }
                     txtAddItem.Text = "";
+                    txtAddItem.Focus();
                 }
             }
         }
