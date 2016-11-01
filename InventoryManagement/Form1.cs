@@ -31,17 +31,20 @@ namespace InventoryManagement
         string weaponString = "";
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
+            UpdateList(firstaidList);
+        }
+        private void UpdateList(SortedList<string, decimal> list)
+        {
             listBox1.Items.Clear();
-            foreach (KeyValuePair<string, decimal> item in firstaidList)
+            foreach (KeyValuePair<string, decimal> item in list)
             {
                 listBox1.Items.Add(item.Key);
             }
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             string listItem = listBox1.GetItemText(listBox1.SelectedItem);
-            decimal value = this.nudAmount.Value;
+            decimal value = nudAmount.Value;
             subtract(value, listItem, foodList);
             subtract(value, listItem, weaponList);
             subtract(value, listItem, firstaidList);
@@ -50,20 +53,12 @@ namespace InventoryManagement
 
         private void rdoFood_CheckedChanged(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
-            foreach (KeyValuePair<string, decimal> food in foodList)
-            {
-                listBox1.Items.Add(food.Key);
-            }
+            UpdateList(foodList);
         }
 
         private void rdoWeapons_CheckedChanged(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
-            foreach (KeyValuePair<string, decimal> weapon in weaponList)
-            {
-                listBox1.Items.Add(weapon.Key);
-            }
+            UpdateList(weaponList);
         }
 
         private string MasterList(SortedList<string,decimal> list, string name)
@@ -95,6 +90,57 @@ namespace InventoryManagement
             else
                 return false;
                 
+        }
+
+        private bool AddValue(decimal value, string item, SortedList<string, decimal> list)
+        {
+            if (list.ContainsKey(item))
+            {
+                int itemIndex = list.IndexOfKey(item);
+                list[item] += value;
+                return true;
+            }
+            else
+                return false;
+        }
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            string listItem = listBox1.GetItemText(listBox1.SelectedItem);
+            decimal value = nudAmount.Value;
+            AddValue(value, listItem, foodList);
+            AddValue(value, listItem, weaponList);
+            AddValue(value, listItem, firstaidList);
+            nudAmount.Value = 0;
+        }
+
+        private void btnItemAdd_Click(object sender, EventArgs e)
+        {
+            string message = "Are you sure you want to add this item to the selected catagory?";
+            DialogResult button = MessageBox.Show(message, "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (button == DialogResult.Yes)
+            {
+                if (rdoFood.Checked)
+                {
+                    foodList.Add(txtAddItem.Text, 0);
+                    UpdateList(foodList);
+                }
+                else if (rdoWeapons.Checked)
+                {
+                    weaponList.Add(txtAddItem.Text, 0);
+                    UpdateList(weaponList);
+                }
+                else if (radioButton3.Checked)
+                {
+                    firstaidList.Add(txtAddItem.Text, 0);
+                    UpdateList(firstaidList);
+                }
+            }
+            
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
