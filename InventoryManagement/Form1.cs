@@ -141,6 +141,7 @@ namespace InventoryManagement
                         firstaidList.Add(txtAddItem.Text, 0);
                         UpdateList(firstaidList);
                     }
+                    txtAddItem.Text = "";
                 }
             }
         }
